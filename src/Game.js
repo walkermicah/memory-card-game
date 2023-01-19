@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ScoreBoard from './ScoreBoard';
 import CardContainer from './CardContainer';
-import generateDeck from './helpers/generateDeck';
+import generateRandomDeck from './helpers/generateRandomDeck';
 import './styles/Game.css';
 
 function Game() {
-  const initialDeck = generateDeck();
-  const [cards, setCards] = useState(initialDeck);
+  const [cards, setCards] = useState(generateRandomDeck());
   const [flippedCards, setFlippedCards] = useState([]);
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-
-  // on mount:
-  // call function to randomize card order & setCards
 
   const flipCard = (e) => {
     if (e.target.classList.contains('Card-front')) return;
@@ -29,10 +25,9 @@ function Game() {
   };
 
   const newGame = () => {
-    console.log('reset game');
     setGameOver(false);
     setMoves(0);
-    setCards(cards.map((c) => ({ ...c, side: 'back' })));
+    setCards(generateRandomDeck());
   };
 
   // Check for a match after cards are flipped
