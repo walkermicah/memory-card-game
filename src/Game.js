@@ -8,6 +8,8 @@ function Game() {
   const initialDeck = generateDeck();
   const [cards, setCards] = useState(initialDeck);
   const [flippedCards, setFlippedCards] = useState([]);
+  const [moves, setMoves] = useState(0);
+  const [bestScore, setBestScore] = useState('-');
 
   // on mount:
   // call function to randomize card order & setCards
@@ -50,9 +52,14 @@ function Game() {
     checkForMatch();
   }, [cards, flippedCards]);
 
+  // Update score after a pair of cards is flipped
+  useEffect(() => {
+    if (flippedCards.length === 2) setMoves(moves + 1);
+  }, [flippedCards, moves]);
+
   return (
     <div className="Game">
-      <ScoreBoard />
+      <ScoreBoard moves={moves} bestScore={bestScore} />
       <CardContainer cards={cards} flipCard={flipCard} />
     </div>
   );
