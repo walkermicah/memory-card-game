@@ -6,7 +6,13 @@ function CardContainer(props) {
   return (
     <div className="CardContainer">
       {props.cards.map((c) => (
-        <Card name={c.name} side={c.side} />
+        <Card
+          key={c.id}
+          name={c.name}
+          side={c.side}
+          id={c.id}
+          flipCard={props.flipCard}
+        />
       ))}
     </div>
   );

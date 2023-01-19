@@ -2,7 +2,13 @@ import React from 'react';
 import './styles/Card.css';
 
 function Card(props) {
-  return <div className="Card">{props.name}</div>;
+  const { side, name, flipCard, id } = props;
+
+  return (
+    <div onClick={flipCard} className={`Card Card-${side}`} id={id}>
+      {side === 'front' ? name : '?'}
+    </div>
+  );
 }
 
 export default Card;
