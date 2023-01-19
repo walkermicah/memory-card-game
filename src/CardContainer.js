@@ -11,6 +11,7 @@ function CardContainer(props) {
           name={c.name}
           side={c.side}
           id={c.id}
+          disabled={c.disabled}
           flipCard={props.flipCard}
         />
       ))}

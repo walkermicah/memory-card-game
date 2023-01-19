@@ -42,13 +42,14 @@ function Game() {
 
       // if different, flip back
       if (flippedCards[0] !== flippedCards[1]) {
+        setCards(cards.map((c) => ({ ...c, disabled: true })));
         setTimeout(
           () =>
             setCards(
               cards.map((c) =>
                 c.name === flippedCards[0] || c.name === flippedCards[1]
-                  ? { ...c, side: 'back' }
-                  : c
+                  ? { ...c, side: 'back', disabled: false }
+                  : { ...c, disabled: false }
               )
             ),
           1000
