@@ -9,7 +9,8 @@ function Game() {
   const [cards, setCards] = useState(initialDeck);
   const [flippedCards, setFlippedCards] = useState([]);
   const [moves, setMoves] = useState(0);
-  const [bestScore, setBestScore] = useState('-');
+  const [bestScore, setBestScore] = useState(null);
+  const [gameOver, setGameOver] = useState(false);
 
   // on mount:
   // call function to randomize card order & setCards
@@ -25,6 +26,13 @@ function Game() {
       )
     );
     setFlippedCards([...flippedCards, e.target.dataset.name]);
+  };
+
+  const newGame = () => {
+    console.log('reset game');
+    setGameOver(false);
+    setMoves(0);
+    setCards(cards.map((c) => ({ ...c, side: 'back' })));
   };
 
   // Check for a match after cards are flipped
@@ -57,10 +65,25 @@ function Game() {
     if (flippedCards.length === 2) setMoves(moves + 1);
   }, [flippedCards, moves]);
 
+  // Check for end of game (all cards flipped)
+  useEffect(() => {
+    if (cards.every((c) => c.side === 'front')) {
+      setGameOver(true);
+    }
+  }, [cards]);
+
+  // Update best score on game over
+  useEffect(() => {
+    if (gameOver) {
+      setBestScore(!bestScore || moves < bestScore ? moves : bestScore);
+    }
+  }, [gameOver, moves, bestScore]);
+
   return (
     <div className="Game">
       <ScoreBoard moves={moves} bestScore={bestScore} />
       <CardContainer cards={cards} flipCard={flipCard} />
+      {gameOver ? <button onClick={newGame}>Play again</button> : ''}
     </div>
   );
 }
