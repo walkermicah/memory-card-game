@@ -2,13 +2,11 @@ import React from 'react';
 import Card from './Card';
 import './styles/CardContainer.css';
 
-function CardContainer() {
-  const cards = Array(20).fill('');
-
+function CardContainer(props) {
   return (
     <div className="CardContainer">
-      {cards.map(() => (
-        <Card />
+      {props.cards.map((c) => (
+        <Card name={c.name} side={c.side} />
       ))}
     </div>
   );
