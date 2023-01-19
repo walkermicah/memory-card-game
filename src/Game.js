@@ -5,12 +5,18 @@ import generateRandomDeck from './helpers/generateRandomDeck';
 import './styles/Game.css';
 
 function Game() {
-  const [cards, setCards] = useState(generateRandomDeck());
+  const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [moves, setMoves] = useState(0);
-  const [bestScore, setBestScore] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [bestScore, setBestScore] = useState(null);
 
+  // Generate random deck when component mounts
+  useEffect(() => {
+    setCards(generateRandomDeck());
+  }, []);
+
+  // flip card on click
   const flipCard = (e) => {
     if (e.target.classList.contains('Card-front')) return;
 
@@ -22,12 +28,6 @@ function Game() {
       )
     );
     setFlippedCards([...flippedCards, e.target.dataset.name]);
-  };
-
-  const newGame = () => {
-    setGameOver(false);
-    setMoves(0);
-    setCards(generateRandomDeck());
   };
 
   // Check for a match after cards are flipped
@@ -74,6 +74,13 @@ function Game() {
       setBestScore(!bestScore || moves < bestScore ? moves : bestScore);
     }
   }, [gameOver, moves, bestScore]);
+
+  // Restart game on click
+  const newGame = () => {
+    setGameOver(false);
+    setMoves(0);
+    setCards(generateRandomDeck());
+  };
 
   return (
     <div className="Game">
