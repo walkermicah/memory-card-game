@@ -1,5 +1,42 @@
 .Card {
+  /* width: 10rem;
+  height: 14rem; */
+  font-size: 3rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.Card img {
   width: 10rem;
   height: 14rem;
-  border: 1px solid black;
+}
+
+.Card-back {
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 10rem;
+  height: 14rem;
+}
+
+.Card .Card-front {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute;
+  left: 0;
+}
+
+.flipped .Card-front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.Card .Card-back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .Card-back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
