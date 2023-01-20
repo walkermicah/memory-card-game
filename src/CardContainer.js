@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './Card';
 import './styles/CardContainer.css';
 
-function CardContainer({ cards, flipCard, gameOver }) {
+function CardContainer({ cards, flipCard }) {
   return (
     <div className="CardContainer">
       {cards.map((c) => (

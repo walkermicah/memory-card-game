@@ -10,10 +10,9 @@ function Card(props) {
         <img className="Card-front" src={imgUrl} alt={name} />
         <div
           className="Card-back"
-          onClick={flipCard}
+          onClick={!disabled ? flipCard : null}
           id={id}
           data-name={name}
-          disabled={disabled}
         >
           ?
         </div>

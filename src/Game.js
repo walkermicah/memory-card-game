@@ -13,8 +13,6 @@ function Game() {
 
   // flip card on click
   const flipCard = (e) => {
-    if (e.target.parentNode.classList.contains('Card-front')) return;
-
     setCards(
       cards.map((c) => (c.id === e.target.id ? { ...c, flipped: true } : c))
     );
@@ -84,17 +82,6 @@ function Game() {
         <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
       )}
     </div>
-    // <div className="Game">
-    //   <ScoreBoard moves={moves} bestScore={bestScore} />
-    //   <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
-    //   {gameOver ? (
-    //     <button onClick={newGame} className="Game-replayBtn">
-    //       New Round
-    //     </button>
-    //   ) : (
-    //     ''
-    //   )}
-    // </div>
   );
 }
 
