@@ -4,12 +4,12 @@ import './styles/CardContainer.css';
 
 function CardContainer({ cards, flipCard, gameOver }) {
   return (
-    <div className="CardContainer" style={{ opacity: `${gameOver ? 0.4 : 1}` }}>
+    <div className="CardContainer">
       {cards.map((c) => (
         <Card
           key={c.id}
           name={c.name}
-          side={c.side}
+          flipped={c.flipped}
           id={c.id}
           imgUrl={c.imgUrl}
           disabled={c.disabled}

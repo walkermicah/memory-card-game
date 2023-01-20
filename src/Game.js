@@ -13,14 +13,10 @@ function Game() {
 
   // flip card on click
   const flipCard = (e) => {
-    if (e.target.classList.contains('Card-front')) return;
+    if (e.target.parentNode.classList.contains('Card-front')) return;
 
     setCards(
-      cards.map((c) =>
-        c.id === e.target.id
-          ? { ...c, side: c.side === 'front' ? 'back' : 'front' }
-          : c
-      )
+      cards.map((c) => (c.id === e.target.id ? { ...c, flipped: true } : c))
     );
     setFlippedCards([...flippedCards, e.target.dataset.name]);
   };
@@ -38,7 +34,7 @@ function Game() {
             setCards(
               cards.map((c) =>
                 c.name === flippedCards[0] || c.name === flippedCards[1]
-                  ? { ...c, side: 'back', disabled: false }
+                  ? { ...c, disabled: false, flipped: false }
                   : { ...c, disabled: false }
               )
             ),
@@ -58,7 +54,9 @@ function Game() {
 
   // Check for end of game (all cards flipped)
   useEffect(() => {
-    setGameOver(cards.length > 0 && cards.every((c) => c.side === 'front'));
+    setTimeout(() => {
+      setGameOver(cards.length > 0 && cards.every((c) => c.flipped));
+    }, 1500);
   }, [cards]);
 
   // Update best score on game over
@@ -77,15 +75,26 @@ function Game() {
   return (
     <div className="Game">
       <ScoreBoard moves={moves} bestScore={bestScore} />
-      <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
+
       {gameOver ? (
         <button onClick={newGame} className="Game-replayBtn">
           New Round
         </button>
       ) : (
-        ''
+        <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
       )}
     </div>
+    // <div className="Game">
+    //   <ScoreBoard moves={moves} bestScore={bestScore} />
+    //   <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
+    //   {gameOver ? (
+    //     <button onClick={newGame} className="Game-replayBtn">
+    //       New Round
+    //     </button>
+    //   ) : (
+    //     ''
+    //   )}
+    // </div>
   );
 }
 

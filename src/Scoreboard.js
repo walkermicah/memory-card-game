@@ -10,7 +10,7 @@ function ScoreBoard(props) {
       </div>
       <div className="ScoreBoard-title">
         <div>Two of a kind</div>
-        <div>A memory card game</div>
+        <div>An art memory card game</div>
       </div>
       <div className="ScoreBoard-best">
         <div>Best score</div>

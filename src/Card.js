@@ -2,17 +2,22 @@ import React from 'react';
 import './styles/Card.css';
 
 function Card(props) {
-  const { side, name, flipCard, id, imgUrl, disabled } = props;
+  const { name, flipCard, id, imgUrl, disabled, flipped } = props;
 
   return (
-    <div
-      onClick={!disabled ? flipCard : null}
-      className={`Card Card-${side}`}
-      id={id}
-      data-name={name}
-      disabled={disabled}
-    >
-      {side === 'front' ? <img src={imgUrl} alt={name} /> : '?'}
+    <div className="Card">
+      <div className={flipped ? 'flipped' : ''}>
+        <img className="Card-front" src={imgUrl} alt={name} />
+        <div
+          className="Card-back"
+          onClick={flipCard}
+          id={id}
+          data-name={name}
+          disabled={disabled}
+        >
+          ?
+        </div>
+      </div>
     </div>
   );
 }
