@@ -5,16 +5,11 @@ import generateRandomDeck from './helpers/generateRandomDeck';
 import './styles/Game.css';
 
 function Game() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(generateRandomDeck);
   const [flippedCards, setFlippedCards] = useState([]);
-  const [moves, setMoves] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [bestScore, setBestScore] = useState(null);
-
-  // Generate random deck when component mounts
-  useEffect(() => {
-    setCards(generateRandomDeck());
-  }, []);
+  const [moves, setMoves] = useState(0);
+  const [bestScore, setBestScore] = useState('-');
 
   // flip card on click
   const flipCard = (e) => {
@@ -63,30 +58,33 @@ function Game() {
 
   // Check for end of game (all cards flipped)
   useEffect(() => {
-    if (cards.every((c) => c.side === 'front')) {
-      setGameOver(true);
-    }
+    setGameOver(cards.length > 0 && cards.every((c) => c.side === 'front'));
   }, [cards]);
 
   // Update best score on game over
   useEffect(() => {
-    if (gameOver) {
-      setBestScore(!bestScore || moves < bestScore ? moves : bestScore);
-    }
+    if (!gameOver) return;
+    setBestScore(bestScore === '-' || moves < bestScore ? moves : bestScore);
   }, [gameOver, moves, bestScore]);
 
   // Restart game on click
   const newGame = () => {
     setGameOver(false);
     setMoves(0);
-    setCards(generateRandomDeck());
+    setCards(generateRandomDeck);
   };
 
   return (
     <div className="Game">
       <ScoreBoard moves={moves} bestScore={bestScore} />
-      <CardContainer cards={cards} flipCard={flipCard} />
-      {gameOver ? <button onClick={newGame}>Play again</button> : ''}
+      <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
+      {gameOver ? (
+        <button onClick={newGame} className="Game-replayBtn">
+          New Round
+        </button>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
