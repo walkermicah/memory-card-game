@@ -10,6 +10,7 @@ function Game() {
   const [gameOver, setGameOver] = useState(false);
   const [moves, setMoves] = useState(0);
   const [bestScore, setBestScore] = useState('-');
+  const [animate, setAnimate] = useState(false);
 
   // flip card on click
   const flipCard = (e) => {
@@ -50,11 +51,15 @@ function Game() {
     if (flippedCards.length === 2) setMoves(moves + 1);
   }, [flippedCards, moves]);
 
+  useEffect(() => {
+    setAnimate(cards.length > 0 && cards.every((c) => c.flipped));
+  }, [cards]);
+
   // Check for end of game (all cards flipped)
   useEffect(() => {
     setTimeout(() => {
       setGameOver(cards.length > 0 && cards.every((c) => c.flipped));
-    }, 1500);
+    }, 3000);
   }, [cards]);
 
   // Update best score on game over
@@ -66,6 +71,7 @@ function Game() {
   // Restart game on click
   const newGame = () => {
     setGameOver(false);
+    setAnimate(false);
     setMoves(0);
     setCards(generateRandomDeck);
   };
@@ -76,10 +82,10 @@ function Game() {
 
       {gameOver ? (
         <button onClick={newGame} className="Game-replayBtn">
-          New Round
+          Shuffle cards
         </button>
       ) : (
-        <CardContainer cards={cards} flipCard={flipCard} gameOver={gameOver} />
+        <CardContainer cards={cards} flipCard={flipCard} animate={animate} />
       )}
     </div>
   );

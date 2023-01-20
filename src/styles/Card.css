@@ -1,22 +1,31 @@
 .Card {
-  /* width: 10rem;
-  height: 14rem; */
   font-size: 3rem;
   cursor: pointer;
   position: relative;
 }
 
-.Card img {
+.Card-front,
+.Card-back {
   width: 10rem;
   height: 14rem;
 }
 
 .Card-back {
-  background-color: black;
+  background-color: #d6cdc4;
   color: white;
-  height: 100%;
-  width: 10rem;
-  height: 14rem;
+  display: grid;
+  place-items: center;
+}
+
+.Card-back img {
+  height: 5.5rem;
+  width: 5.5rem;
+  transition: transform ease-out 0.2s;
+  opacity: 0.8;
+}
+
+.Card-back:hover img {
+  transform: rotate(-5deg);
 }
 
 .Card .Card-front {
@@ -32,7 +41,7 @@
 }
 
 .Card .Card-back {
-  transition: all ease-in 0.2s;
+  transition: all ease-in 0.1s;
   transition-delay: 0.2s;
 }
 

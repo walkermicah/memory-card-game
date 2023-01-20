@@ -1,5 +1,9 @@
 .App {
+  /* background-color: #494b5a; */
+  background-color: #aba59f;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  height: 100vh;
 }

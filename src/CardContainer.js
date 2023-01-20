@@ -2,9 +2,9 @@ import React from 'react';
 import Card from './Card';
 import './styles/CardContainer.css';
 
-function CardContainer({ cards, flipCard }) {
+function CardContainer({ cards, flipCard, animate }) {
   return (
-    <div className="CardContainer">
+    <div className={animate ? 'CardContainer-gameOver' : 'CardContainer'}>
       {cards.map((c) => (
         <Card
           key={c.id}

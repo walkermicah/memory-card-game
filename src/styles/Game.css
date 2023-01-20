@@ -1,5 +1,30 @@
 .Game {
+  height: 95%;
   display: grid;
-  gap: 2rem;
-  margin: 2rem;
+  grid-template-columns: max-content 70rem;
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-family: 'Righteous', cursive;
+}
+
+.Game-replayBtn {
+  background-color: #d6cdc5;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-style: none;
+  font: inherit;
+  padding: 2rem 1rem;
+  text-transform: uppercase;
+  word-spacing: 3px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all ease-out 0.2s;
+}
+
+.Game-replayBtn:hover {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 100%;
+  transform: translateY(-3px);
 }

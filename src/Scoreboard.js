@@ -4,13 +4,13 @@ import './styles/ScoreBoard.css';
 function ScoreBoard(props) {
   return (
     <div className="ScoreBoard">
-      <div className="ScoreBoard-score">
-        <div>Total moves</div>
+      <div className="ScoreBoard-moves">
+        <div>Moves</div>
         <div>{props.moves}</div>
       </div>
       <div className="ScoreBoard-title">
-        <div>Two of a kind</div>
-        <div>An art memory card game</div>
+        <span>Two of</span>
+        <span>a kind</span>
       </div>
       <div className="ScoreBoard-best">
         <div>Best score</div>
