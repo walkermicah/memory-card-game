@@ -1,6 +1,6 @@
 import React from 'react';
-import paint from './img/paint.svg';
-import './styles/Card.css';
+import paint from '../img/paint.svg';
+import '../styles/Card.css';
 
 function Card(props) {
   const { name, flipCard, id, imgUrl, disabled, flipped } = props;

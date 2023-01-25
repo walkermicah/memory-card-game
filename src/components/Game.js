@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ScoreBoard from './ScoreBoard';
 import CardContainer from './CardContainer';
-import generateRandomDeck from './helpers/generateRandomDeck';
-import './styles/Game.css';
+import generateRandomDeck from '../helpers/generateRandomDeck';
+import '../styles/Game.css';
 
 function Game() {
   const [cards, setCards] = useState(generateRandomDeck);
@@ -42,7 +42,6 @@ function Game() {
       }
       setFlippedCards([]);
     };
-
     checkForMatch();
   }, [cards, flippedCards]);
 
@@ -51,15 +50,16 @@ function Game() {
     if (flippedCards.length === 2) setMoves(moves + 1);
   }, [flippedCards, moves]);
 
-  useEffect(() => {
-    setAnimate(cards.length > 0 && cards.every((c) => c.flipped));
-  }, [cards]);
-
   // Check for end of game (all cards flipped)
   useEffect(() => {
     setTimeout(() => {
-      setGameOver(cards.length > 0 && cards.every((c) => c.flipped));
+      setGameOver(cards.every((c) => c.flipped));
     }, 3000);
+  }, [cards]);
+
+  // animate background color if end of game
+  useEffect(() => {
+    setAnimate(cards.length > 0 && cards.every((c) => c.flipped));
   }, [cards]);
 
   // Update best score on game over

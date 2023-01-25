@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import './styles/CardContainer.css';
+import '../styles/CardContainer.css';
 
 function CardContainer({ cards, flipCard, animate }) {
   return (
