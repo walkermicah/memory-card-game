@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/memory-card-game/static/css/main.42139a36.css",
+    "main.js": "/memory-card-game/static/js/main.2c7ac460.js",
+    "static/media/davinci.png": "/memory-card-game/static/media/davinci.c591a3e7662c7cfecacd.png",
+    "static/media/pollock.png": "/memory-card-game/static/media/pollock.4a3ec86c771a0eadafe5.png",
+    "static/media/kandinsky.png": "/memory-card-game/static/media/kandinsky.8315faa7cb4215d3b2a0.png",
+    "static/media/picasso.png": "/memory-card-game/static/media/picasso.aa93bda2b7475f36a8de.png",
+    "static/media/kahlo.png": "/memory-card-game/static/media/kahlo.eb258a0cfd6344186a4f.png",
+    "static/media/dali.png": "/memory-card-game/static/media/dali.6aabcd38349acfea7f00.png",
+    "static/media/magritte.png": "/memory-card-game/static/media/magritte.7a93de4c2418e3f70fe6.png",
+    "static/media/basquiat.png": "/memory-card-game/static/media/basquiat.50ff886b234af6586e4b.png",
+    "static/media/warhol.png": "/memory-card-game/static/media/warhol.8abd5a3f1779c2502fd3.png",
+    "static/media/mondrian.png": "/memory-card-game/static/media/mondrian.e1db63def449acc14c4f.png",
+    "static/media/paint.svg": "/memory-card-game/static/media/paint.b10773728678bc66eab38f816d0be5f2.svg",
+    "index.html": "/memory-card-game/index.html",
+    "main.42139a36.css.map": "/memory-card-game/static/css/main.42139a36.css.map",
+    "main.2c7ac460.js.map": "/memory-card-game/static/js/main.2c7ac460.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42139a36.css",
+    "static/js/main.2c7ac460.js"
+  ]
+}
