@@ -11,11 +11,11 @@ function Card(props) {
         <img className="Card-front" src={imgUrl} alt={`Card front: ${name}`} />
         <div
           className="Card-back"
-          onClick={!disabled ? flipCard : null}
+          onClick={!disabled ? () => flipCard(id, name) : null}
           id={id}
           data-name={name}
         >
-          <img src={paint} alt="Card back" id={id} data-name={name} />
+          <img src={paint} alt="Card back" />
         </div>
       </div>
     </div>

@@ -12,12 +12,9 @@ function Game() {
   const [bestScore, setBestScore] = useState('-');
   const [animate, setAnimate] = useState(false);
 
-  // flip card on click
-  const flipCard = (e) => {
-    setCards(
-      cards.map((c) => (c.id === e.target.id ? { ...c, flipped: true } : c))
-    );
-    setFlippedCards([...flippedCards, e.target.dataset.name]);
+  const flipCard = (id, name) => {
+    setCards(cards.map((c) => (c.id === id ? { ...c, flipped: true } : c)));
+    setFlippedCards([...flippedCards, name]);
   };
 
   // Check for a match after cards are flipped
